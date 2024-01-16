@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title>study smart</title>
+        <style>
+            body{
+                background-color: antiquewhite;
+                margin:0;
+                overflow: hidden;
+            }
+        #one{
+            
+            height:12vh;
+            width:100vw;
+            background-image:url("uni.jpg"); ;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            font-size:xx-large;
+            
+        }
+        .ele{
+             border-radius: 25%;
+             background-color: #04AA6D;
+             color:white;
+            border:3px solid blue;
+        }
+        #MENU{
+          
+            position: absolute;
+            left:20px;
+            border:4px dashed blue;
+        }
+        #two{
+          background-image: url("bac.jpg");
+          background-repeat: no-repeat;
+          background-size: 100vw 85vh;
+            height:85vh;
+            width:100vw;
+            background-color:aqua ;
+        }/* Dropdown Button */
+.dropbtn {
+  border-radius:25%;
+  background-color: #04AA6D;
+  color: white;
+  padding: 8px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  
+  position: absolute;
+  left:25px;
+}
+#d2{
+    position: absolute;
+    left:80vw;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+}
+.alpha{
+  font-size: medium;
+  text-align: center;
+  padding: 5px;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+        </style>
+        <script>
+            function chn(str){
+                document.getElementById('if').src =str;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="one">
+            <div class="dropdown">
+                <button class="dropbtn">SEARCH</button>
+                <div class="dropdown-content">
+                  <div class="alpha" onclick="chn('array.html');">LINEAR SEARCH</div>
+                  <div class="alpha" onclick="chn('bsearch.html');">BINARY SEARCH</div>
+                </div>
+              </div>   
+              <div class="dropdown" id="d2">
+              <button class="dropbtn" id="db2">SORT</button>
+                <div class="dropdown-content" id="dc2">
+                  <div class="alpha">BUBBLE SORT</div>
+                  <div class="alpha">SELECTION SORT</div>
+                </div>
+              </div>          
+               <div class="ele">STUDY SMART</div>
+            
+        </div>
+        <div id="two"><iframe id ="if" src="" style="height:85vh;width:100vw" title="Iframe Example"></iframe></div>
+    </body>
+</html>

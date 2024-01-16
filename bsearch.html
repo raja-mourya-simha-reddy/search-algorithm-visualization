@@ -1,0 +1,193 @@
+<html>
+<head>
+    <title>array</title>
+    <style>
+         body{
+            padding:0;
+            margin:0;
+            display:grid;
+            grid-template-columns: auto auto;
+            grid-template-rows:auto auto;
+            background-color: grey;
+            gap: 5px;
+            height: 200px;
+            width: 200px;
+                    }
+                    #dis{
+                        border:3px solid white;
+                        min-height:auto;
+                        grid-column: 1 / span 2;
+                        display:flex;
+                        flex-direction: column;
+                    }
+                    #def{
+                        padding-top:2vh;
+                        padding-bottom:2vh;
+                        padding-left: 2vw;
+                        padding-right: 2vw;   
+                    }
+  input[type=text], select {
+  width: 100%;
+  height: 5vh;
+  padding: 5px 7px;
+  margin-bottom:10px ;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=button] {
+  width: 100%;
+  height:5vh;
+  background-color: darkgreen;
+  color: white;
+  padding: 5px 7px;
+  /* margin: 8px 0; */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=button]:hover {
+  background-color: #45a049;
+}   
+.same{
+    display:flex;
+    align-items:end;
+    justify-content:center;
+}              
+.mystyle{
+    height: 50px;
+    width: 50px;
+    margin: 3px;
+    background-color: orange;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#val{
+    align-items: normal;
+}
+    </style>
+    <script>
+        function generate()
+        {
+           var n =parseInt(document.getElementById("n").value);
+           var x = parseInt(document.getElementById("x").value);
+           var str = document.getElementById("arr").value;
+           var temp = 0,j=1,count=0;
+           
+           let arr = new Array();
+           let l =str.length;
+           for(i=0;i<l;i++)
+           {
+            if(str[i]==" ")
+            {arr[count]=temp;temp=0;count++;continue;}
+             temp=temp*10+parseInt(str[i]);
+            
+             if(i==l-1)
+            {
+                arr[count]=temp;
+                break;
+            }
+             
+           }
+           arr=arr.sort(function(a, b){return a - b});
+            let divs = [];
+            let divs2 = [];
+            for(i=0;i<n;i++)
+             {divs[i] = document.createElement("div");
+             divs2[i] = document.createElement("div");
+             divs[i].setAttribute('id','d'+i);
+             divs2[i].setAttribute('id','d2'+i);
+        divs[i].innerHTML=i;
+        divs2[i].innerHTML=arr[i];
+        divs[i].classList.add("mystyle");
+        divs2[i].classList.add("mystyle");
+            }
+            
+        for(i=0;i<n;i++)
+        {document.getElementById("ind").appendChild(divs[i]);
+        document.getElementById("val").appendChild(divs2[i]);
+           }  
+            var ms=1000;
+           binarySearch(arr,0,n-1,x,ms);
+           
+           function binarySearch(a,beg,end,val,ms)    
+{    
+    var mid;    
+    if(end >= beg)     
+
+    {   mid = Math.floor((beg + end)/2);    
+        if(a[mid] == val)    
+        {      
+            setTimeout(function(){document.getElementById("d2"+mid).style.background="green";},ms);
+            setTimeout(function(){document.getElementById("d"+mid).style.background="green";},ms);
+            return mid+1;    
+        }    
+        else if(a[mid] < val)     
+        {  
+             setTimeout(function(){document.getElementById("d2"+mid).style.background="white";},ms);
+             setTimeout(function(){document.getElementById("d"+mid).style.background="white";},ms);
+             return binarySearch(a, mid+1, end, val,ms+1000);    
+        }    
+        else     
+        {    
+            setTimeout(function(){document.getElementById("d2"+mid).style.background="white";},ms);
+            setTimeout(function(){document.getElementById("d"+mid).style.background="white";},ms);
+            return binarySearch(a, beg, mid-1, val,ms+1000);    
+        }          
+    }    
+    return -1;     
+}   
+          
+        }
+        
+    </script>
+<body>
+    
+    <div id="def" style="color:rgb(41, 40, 40);height: 46vh;width:46vw; background-image:linear-gradient(to bottom right,green,lightgreen) ;"><h1>DEFINATION :</h1><p style="font-size:large;text-align: justify; text-indent:15px;font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"">Binary Search is a searching algorithm used in a sorted array by repeatedly dividing the search interval in half. The idea of binary search is to use the information that the array is sorted and reduce the time complexity to O(Log n).</p></div>
+    <div id="prog"style="color:rgb(41, 40, 40);height: 50vh;width:50vw; background-image:linear-gradient(to bottom left,green,lightgreen);">
+        <h1 style="padding-left:50px;">EXAMPLE PROGRAM :</h1>
+        <div style="display:flex; margin:0px;padding:0px">
+        <P style="font-weight:bold;font-size:large;margin:0px;padding-left:50px;padding-top:px;">
+            int binarySearch(int a[], int beg, int end, int val) <br>   
+            {   int mid;if(end >= beg) <br>     
+                {        mid = (beg + end)/2;<br>     
+                    if(a[mid] == val)<br>     
+                    {return mid+1;    }<br>     
+                    else if(a[mid] < val) <br>     
+                    {  return binarySearch(a, mid+1, end, val);    }}}<br></P>
+    <div style="margin-left:20px;padding:0px;width:25vw;height:50vh;">
+        <form action="/action_page.php">
+        <label for="fname">ARRAY SIZE :</label>
+        <input type="text" id="n" name="firstname" placeholder="ex: 5">
+    
+        <label for="lname">ARRAY VALUES:</label>
+        <input type="text" id="arr" name="lastname" placeholder="ex: 1 2 3 4 5">
+    
+        <label for="country">ELEMENT TO FIND :</label>
+               <input type="text" id="x" name="lastname" placeholder="ex: 3">
+
+      
+        <input type="button" value="DISPLAY" onclick="generate();">
+      </form></div>
+    </div>
+</div>
+    <div id="dis"style="height: 50vh;width:100vw; background-image:linear-gradient(to bottom right,green,lightgreen);">
+           <div class="same"id="ind" style="height:50%;width:100vw;">
+            <div class="mystyle"style="height:50px;width:100px;background-color:darkgreen;color:white;">INDICES</div>
+        </div>
+           <div class="same"id="val"style="height:50%;width:100vw;">
+            <div class="mystyle"style="height:50px;width:100px;background-color: darkgreen;color:white;">VALUES</div>
+        </div>
+    
+    
+    </div>
+    
+    
+</body>
+</html>
+<!-- <div style="height:20px;width:20px;background-color: tomato;"></div> -->
